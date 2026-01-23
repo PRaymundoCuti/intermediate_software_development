@@ -13,3 +13,5 @@ print(p.get_first_name())
 print(p.get_last_name())
 print(p.get_email_address())
 print(str(p))
+
+## i have to learn to create accessor with propierties and namemingl
