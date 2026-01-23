@@ -4,12 +4,12 @@ This project will be developed over the course of several assignments.  Each ass
 
 ## Author
 
-[Your name]
+[Pablo Raymundo Cuti]
 
 ## Assignment
 
-Assignment [assignment number]: [Indicate the name and description of the current assignment]
+Assignment 1: Client and back account classes created 
 
 ## Encapsulation
 
-[use this section to explain how Encapsulation was achieved in the BankAccount class.]
+encapsualtion is achieven because is the info is not accessible or modificable throught normal calls 
