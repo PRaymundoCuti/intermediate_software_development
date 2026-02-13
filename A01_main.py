@@ -2,7 +2,7 @@
 Client classes.
 """
 
-from bank_account.bank_account import BankAccount
+from bank_account.bankaccount import BankAccount
 from client.client import Client
 
 __author__ = "ACE Faculty"

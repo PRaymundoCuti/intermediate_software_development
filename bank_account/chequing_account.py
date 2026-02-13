@@ -1,4 +1,4 @@
-from bank_account import BankAccount
+from .bank_account import BankAccount
 from datetime import date
 
 class ChequingAccount(BankAccount):
@@ -64,14 +64,3 @@ class ChequingAccount(BankAccount):
         except:
             pass
 
-p=ChequingAccount(1,1,1,date.today(),"gp",.5)
-print(str(p))
-p.deposit(8)
-print(str(p))
-p.withdraw(50)
-print(str(p))
-p.withdraw(150)
-print(str(p))
-charger=p.get_service_charges()
-
-print(charger)
