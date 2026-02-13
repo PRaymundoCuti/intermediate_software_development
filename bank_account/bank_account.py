@@ -26,11 +26,10 @@ class BankAccount(ABC):
     def withdraw(self,amount:float)->None:
         pass
 
-        
+
     def __str__(self) -> str:
-        return (f"Account Number: {self.__account_number} Client Number: {self.__client_number}\n"
-                f"Balance: {self.__balance:,.2f} Date Created: {self.__date_created}")
+        return (f"Account Number: {self.__account_number}  Balance: {self.__balance}\n")
 
     @abstractmethod
-    def get_service_charges(self):
+    def get_service_charges(self)->float:
         pass
