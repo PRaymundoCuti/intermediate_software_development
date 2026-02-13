@@ -1,4 +1,4 @@
-from general_functions import *
+from client.general_functions import *
 class BankAccount:
     def __init__(self,account_number,client_number,balance):
         try:

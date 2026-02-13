@@ -1,4 +1,4 @@
-from bank_account import BankAccount
+from bank_account.bank_account import BankAccount
 
 p=BankAccount(1,1,1.)
 print("p object created")

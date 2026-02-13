@@ -1,5 +1,5 @@
 
-from general_functions import*
+from client.general_functions import*
 class Client:
     def __init__(self, client_number,first_name,last_name,email_address):
         try:

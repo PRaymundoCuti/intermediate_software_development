@@ -1,4 +1,4 @@
-from client import Client
+from client.client import Client
 p=Client(1,"pablo","raymundo","pr@hotmail.com")
 print("p object created")
 
