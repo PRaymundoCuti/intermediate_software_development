@@ -20,7 +20,7 @@ class ChequingAccount(BankAccount):
                 raise Exception
             self.__overdraft_rate=overdraft_rate
         except Exception:
-            self.__overdraft_rate=-.05
+            self.__overdraft_rate=.05
 
     def __str__(self):
         base_str = super().__str__()
