@@ -3,7 +3,7 @@ from datetime import date
 
 
 class InvestmentAccount(BankAccount):
-    __TEN_YEARS_AGO = date.today().replace(date.today().year-10)
+    __TEN_YEARS_AGO = date.today().replace(year=date.today().year-10)
 
     def __init__(self, account_number, client_number, balance, date_created, management_fee: float):
         super().__init__(account_number, client_number, balance, date_created)
@@ -17,8 +17,12 @@ class InvestmentAccount(BankAccount):
 
     def __str__(self):
         base_str = super().__str__()
-        return (f"{base_str}"
-                f"Date Created: {self._BankAccount__date_created} Management Fee: ${self.__management_fee:.2f}  Account Type: Investment")
+        if (self._BankAccount__date_created <= self.__TEN_YEARS_AGO):
+            return (f"{base_str}"
+                    f"Date Created: {self._BankAccount__date_created} Management Fee: (waived fee)  Account Type: Investment")
+        else:
+            return (f"{base_str}"
+                    f"Date Created: {self._BankAccount__date_created} Management Fee: ${self.__management_fee:.2f}  Account Type: Investment")
 
     def get_service_charges(self) -> float:
         BASE_SERVICE_CHARGE = self._BankAccount__BASE_SERVICE_CHARGE
