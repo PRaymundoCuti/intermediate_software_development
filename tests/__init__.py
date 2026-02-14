@@ -1,2 +1,0 @@
-from bank_account.bankaccount import BankAccount 
-from bank_account.chequing_account import ChequingAccount
