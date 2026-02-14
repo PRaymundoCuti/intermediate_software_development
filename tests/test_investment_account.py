@@ -21,7 +21,7 @@ class TestInvestmentAccount(unittest.TestCase):
 # # 2 management fee has invalid type.
 
 
-    def management_fee_has_invalid_type(self):
+    def test_management_fee_has_invalid_type(self):
         test_account = InvestmentAccount(1, 10, 500.0, date.today(), "hi")
         expected = 2.5
         actual = test_account._InvestmentAccount__management_fee
@@ -29,41 +29,41 @@ class TestInvestmentAccount(unittest.TestCase):
 
 # # 3 date created more than 10 years ago
 
-    def date_created_more_than_10_years_ago(self):
+    def test_date_created_more_than_10_years_ago(self):
         test_account = InvestmentAccount(1, 10, 500.0, date(2000, 1, 1), 2)
-        expected = self._BankAccount__BASE_SERVICE_CHARGE
+        expected = test_account._BankAccount__BASE_SERVICE_CHARGE
         actual = test_account.get_service_charges()
         self.assertEqual(expected, actual)
 
 # # 4 date_created_exactly_10_years_ago.
-    def date_created_exactly_10_years_ago(self):
+    def test_date_created_exactly_10_years_ago(self):
         test_account = InvestmentAccount(
             1, 10, 500.0, date.today().replace(year=date.today().year-10), 2)
-        expected = self._BankAccount__BASE_SERVICE_CHARGE + \
-            self._InvestmentAccount_management_fee
+        expected = test_account._BankAccount__BASE_SERVICE_CHARGE
+
         actual = test_account.get_service_charges()
         self.assertEqual(expected, actual)
 
 # # 5 date_created_within_last_10_years.
-    def date_created_within_last_10_years(self):
+    def test_date_created_within_last_10_years(self):
         test_account = InvestmentAccount(1, 10, 500.0, date(2000, 1, 1), 2)
-        expected = self._BankAccount__BASE_SERVICE_CHARGE
+        expected = test_account._BankAccount__BASE_SERVICE_CHARGE
         actual = test_account.get_service_charges()
         self.assertEqual(expected, actual)
 
 # # 6 displays_waived_management_fee_when_date_created_more_than_10_years_ago
-    def displays_waived_management_fee_when_date_created_more_than_10_years_ago(self):
+    def test_displays_waived_management_fee_when_date_created_more_than_10_years_ago(self):
         test_account = InvestmentAccount(1, 10, 500.0, date(2000, 1, 1), 2)
-        expected = (f"Account Number: {test_account._BankAccount__account_number}  Balance: {test_account._BankAccount__balance}\n"
-                    f"Date Created: {self._BankAccount__date_created} Management Fee: (waived fee)  Account Type: Investment")
+        expected = (f"Account Number: {test_account._BankAccount__account_number}  Balance: {test_account._BankAccount__balance}$\n"
+                    f"Date Created: {test_account._BankAccount__date_created} Management Fee: (waived fee)  Account Type: Investment")
         actual = str(test_account)
         self.assertEqual(expected, actual)
 
-# # 7 balance equal to overdraft limit
-    def displays_waived_management_fee_when_date_created_more_than_10_years_ago(self):
+# # 7 displays_management_fee_when_date_created_within_last_10_years
+    def test_displays_management_fee_when_date_created_within_last_10_years(self):
         test_account = InvestmentAccount(1, 10, 500.0, date(2020, 1, 1), 2)
-        expected = (f"Account Number: {test_account._BankAccount__account_number}  Balance: {test_account._BankAccount__balance}\n"
-                    f"Date Created: {self._BankAccount__date_created} Management Fee: ${self.__management_fee:.2f}  Account Type: Investment")
+        expected = (f"Account Number: {test_account._BankAccount__account_number}  Balance: {test_account._BankAccount__balance}$\n"
+                    f"Date Created: {test_account._BankAccount__date_created} Management Fee: ${test_account._InvestmentAccount__management_fee:.2f}  Account Type: Investment")
         actual = str(test_account)
         self.assertEqual(expected, actual)
 

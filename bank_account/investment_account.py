@@ -13,7 +13,7 @@ class InvestmentAccount(BankAccount):
                 raise Exception
             self.__management_fee = management_fee
         except Exception:
-            self.__management_fee = 2.55
+            self.__management_fee = 2.5
 
     def __str__(self):
         base_str = super().__str__()
@@ -41,7 +41,7 @@ class InvestmentAccount(BankAccount):
     def update_balance(self, amount: float) -> None:
         try:
             amount = float(amount)
-            if (self._BankAccount__balance+amount < self.__overdraft_limit):
+            if (self._BankAccount__balance+amount < 0):
                 raise ValueError
             self._BankAccount__balance += amount
         except:

@@ -38,7 +38,7 @@ class SavingsAccount(BankAccount):
     def update_balance(self, amount: float) -> None:
         try:
             amount = float(amount)
-            if (self._BankAccount__balance+amount < self.__overdraft_limit):
+            if (self._BankAccount__balance+amount < 0):
                 raise ValueError
             self._BankAccount__balance += amount
         except:
