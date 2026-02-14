@@ -11,7 +11,7 @@ class InvestmentAccount(BankAccount):
             management_fee = float(management_fee)
             if (management_fee < 0):
                 raise Exception
-            self.management_fee = management_fee
+            self.__management_fee = management_fee
         except Exception:
             self.__management_fee = 2.55
 
