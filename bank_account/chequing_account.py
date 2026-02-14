@@ -28,16 +28,17 @@ class ChequingAccount(BankAccount):
                 f"Overdraft Limit: ${self.__overdraft_limit:.2f} Overdraft Rate: {self.__overdraft_rate * 10:.2f}%  Account Type: Chequing")
 
     def get_service_charges(self) -> float:
+        BASE_SERVICE_CHARGE = self._BankAccount__BASE_SERVICE_CHARGE
         if (self._BankAccount__balance >= self.__overdraft_limit):
-            # print(
-            #     f"Chargers: {self._BankAccount__BASE_SERVICE_CHARGE}={self._BankAccount__BASE_SERVICE_CHARGE}")
-            return self._BankAccount__BASE_SERVICE_CHARGE
+            print(
+                f"Chargers: ${BASE_SERVICE_CHARGE}+ (waived fee) =${BASE_SERVICE_CHARGE}")
+            return BASE_SERVICE_CHARGE
         else:
-            charge = self._BankAccount__BASE_SERVICE_CHARGE + \
+            charge = BASE_SERVICE_CHARGE + \
                 (self._BankAccount__balance-self.__overdraft_limit) * \
                 self.__overdraft_rate
-            # print(
-            #     f"Chargers: {self._BankAccount__BASE_SERVICE_CHARGE}+ ({self._BankAccount__balance}-{self.__overdraft_limit})*{self.__overdraft_rate}={charge:.2f}")
+            print(
+                f"Chargers: ${BASE_SERVICE_CHARGE}+ (${self._BankAccount__balance}-${self.__overdraft_limit})*{self.__overdraft_rate * 10:.2f}%={charge:.2f}")
             return charge
 
     def update_balance(self, amount: float) -> None:
