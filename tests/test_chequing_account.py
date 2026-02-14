@@ -1,7 +1,6 @@
 import unittest
 from datetime import date
 from bank_account.chequing_account import ChequingAccount
-from bank_account.bank_account import BankAccount
 
 # python -m unittest tests/test_chequing_account.py
 
@@ -73,8 +72,8 @@ class TestChequingAccount(unittest.TestCase):
 # 8 appropriate value returned based on attribute values.
     def test_str(self):
         test_account = ChequingAccount(1, 10, -99, date.today(), -100, -.05)
-        expected = (f"Account Number: {test_account._BankAccount__account_number}  Balance: {test_account._BankAccount__balance}\n"
-                    f"Overdraft Limit: ${test_account._ChequingAccount__overdraft_limit:.2f} Overdraft Rate: {test_account._ChequingAccount__overdraft_rate * 10:.2f}% "
+        expected = (f"Account Number: {test_account._BankAccount__account_number}  Balance: {test_account._BankAccount__balance}$\n"
+                    f"Overdraft Limit: ${test_account._ChequingAccount__overdraft_limit:.2f} Overdraft Rate: {test_account._ChequingAccount__overdraft_rate * 10:.2f}%  Account Type: Chequing"
                     )
         actual = str(test_account)
         self.assertEqual(expected, actual)
