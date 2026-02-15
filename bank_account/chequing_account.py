@@ -1,4 +1,4 @@
-"""This module defines the ChequingAccount class."""
+"""This module defines the chequingAccount class."""
 from bank_account import BankAccount
 from datetime import date
 
@@ -10,7 +10,7 @@ class ChequingAccount(BankAccount):
     """
     Represents an chequing bank account.
 
-    An InvestmentAccount applies a fee according the amount exceed in the overdraft_limit with a overdraft_rate.
+    An chequingAccount applies a fee according the amount exceed in the overdraft_limit with a overdraft_rate.
     """
 
     def __init__(self, account_number, client_number, balance, date_created, overdraft_limit: float, overdraft_rate: float):
