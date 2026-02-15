@@ -12,4 +12,4 @@ Assignment 2
 
 ## Polymorphism
 
-Polymorphism is achieved through the use of method overriding in the BankAccount subclasses. ChequingAccount, SavingsAccount, and InvestmentAccount provides its own implementation of the get_service_charges method
+Polymorphism is achieved through the use of method overriding in the BankAccount subclasses. ChequingAccount, SavingsAccount, and InvestmentAccount provides its own implementation of the get_service_charges and __str__() methods.
