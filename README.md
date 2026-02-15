@@ -8,8 +8,8 @@ This project will be developed over the course of several assignments.  Each ass
 
 ## Assignment
 
-Assignment 1: Client and back account classes created 
+Assignment 2
 
-## Encapsulation
+## Polymorphism
 
-encapsualtion is achieven because is the info is not accessible or modificable throught normal calls 
+Polymorphism is achieved through the use of method overriding in the BankAccount subclasses. ChequingAccount, SavingsAccount, and InvestmentAccount provides its own implementation of the get_service_charges method

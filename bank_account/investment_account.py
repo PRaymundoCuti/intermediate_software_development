@@ -1,12 +1,13 @@
 from bank_account import BankAccount
-from datetime import date
+from datetime import date, timedelta
 
 
 class InvestmentAccount(BankAccount):
-    __TEN_YEARS_AGO = date.today().replace(year=date.today().year-10)
+    TEN_YEARS_AGO = date.today()-timedelta(days=10 * 365.25)
 
     def __init__(self, account_number, client_number, balance, date_created, management_fee: float):
         super().__init__(account_number, client_number, balance, date_created)
+
         try:
             management_fee = float(management_fee)
             if (management_fee < 0):
@@ -16,51 +17,12 @@ class InvestmentAccount(BankAccount):
             self.__management_fee = 2.5
 
     def __str__(self):
-        base_str = super().__str__()
-        if (self._BankAccount__date_created <= self.__TEN_YEARS_AGO):
-            return (f"{base_str}"
-                    f"Date Created: {self._BankAccount__date_created} Management Fee: (waived fee)  Account Type: Investment")
-        else:
-            return (f"{base_str}"
-                    f"Date Created: {self._BankAccount__date_created} Management Fee: ${self.__management_fee:.2f}  Account Type: Investment")
+
+        return (f"\nAccount Number: {self._BankAccount__account_number}  Balance: {self._BankAccount__balance:.2f}$\n"
+                f"Date Created: {self._date_created} Management Fee: {(self.get_service_charges()):.2f}  Account Type: Investment")
 
     def get_service_charges(self) -> float:
-        BASE_SERVICE_CHARGE = self._BankAccount__BASE_SERVICE_CHARGE
-
-        if (self._BankAccount__date_created <= self.__TEN_YEARS_AGO):
-            print(
-                f"Chargers: ${BASE_SERVICE_CHARGE:.2f} + (waived fee) = ${BASE_SERVICE_CHARGE:.2f} ")
-            return BASE_SERVICE_CHARGE
+        if (self._date_created <= self.TEN_YEARS_AGO):
+            return self.BASE_SERVICE_CHARGE
         else:
-            charge = BASE_SERVICE_CHARGE + \
-                self.management_fee
-            print(
-                f"Chargers: ${BASE_SERVICE_CHARGE:.2f}+ ${self.management_fee:.2f}=${charge:.2f}")
-            return charge
-
-    def update_balance(self, amount: float) -> None:
-        try:
-            amount = float(amount)
-            if (self._BankAccount__balance+amount < 0):
-                raise ValueError
-            self._BankAccount__balance += amount
-        except:
-            pass
-
-    def deposit(self, amount: float) -> None:
-        try:
-            amount = float(amount)
-            if (amount < 0):
-                raise ValueError
-            self._BankAccount__balance += amount
-        except:
-            pass
-
-    def withdraw(self, amount) -> None:
-        try:
-            amount = float(amount)
-            if (amount < 0):
-                raise ValueError
-            self._BankAccount__balance -= amount
-        except:
-            pass
+            return (self.BASE_SERVICE_CHARGE+self.__management_fee)
